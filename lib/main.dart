@@ -1,3 +1,6 @@
+import 'package:first_flutter_app/data/notifiers.dart';
+import 'package:first_flutter_app/views/widget_tree.dart';
+import 'package:first_flutter_app/widgets/navbar_widget.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,40 +15,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.blue,
-          brightness: Brightness.dark,
-        ),
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-          centerTitle: true,
-          backgroundColor: Colors.blueAccent,
-        ),
-        floatingActionButton: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            FloatingActionButton(
-              onPressed: () {},
-              child: Icon(Icons.add_alarm_rounded),
+    return ValueListenableBuilder(
+      valueListenable: isDarkModeNotifier,
+      builder: (context, isDarkMode, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: Colors.blue,
+              brightness: isDarkMode ? Brightness.dark : Brightness.light,
             ),
-          ],
-        ),
-        bottomNavigationBar: NavigationBar(
-          destinations: [
-            NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-            NavigationDestination(
-              icon: Icon(Icons.person_2_rounded),
-              label: 'Profile',
-            ),
-          ],
-          onDestinationSelected: (int value) => {print(value)},
-        ),
-      ),
+          ),
+          home: WidgetTree(),
+        );
+      },
     );
   }
 }
