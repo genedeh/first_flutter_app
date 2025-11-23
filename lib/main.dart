@@ -1,6 +1,8 @@
+import 'package:first_flutter_app/data/constants.dart';
 import 'package:first_flutter_app/data/notifiers.dart';
 import 'package:first_flutter_app/views/pages/welcome_page.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,8 +11,26 @@ void main() {
 //STATELESS
 String title = 'Luna';
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    initThemeMode();
+    super.initState();
+  }
+
+  void initThemeMode() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final bool? isDarkMode = prefs.getBool(KConstant.isDarkKey);
+
+    isDarkModeNotifier.value = isDarkMode ?? false;
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -6,7 +6,9 @@ class CardStyle {
     fontSize: 18.0,
     fontWeight: FontWeight.bold,
   );
-   static const TextStyle bodyText = TextStyle(
-    fontSize: 16.0,
-  );
+  static const TextStyle bodyText = TextStyle(fontSize: 16.0);
+}
+
+class KConstant {
+  static const String isDarkKey = 'isDarkKey';
 }
