@@ -12,3 +12,5 @@ class CardStyle {
 class KConstant {
   static const String isDarkKey = 'isDarkKey';
 }
+
+List<String> kTitles = ['Basic Layout', 'Clean UI', 'Key Concepts', 'Fix Bugs'];
