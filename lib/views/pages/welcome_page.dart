@@ -1,5 +1,5 @@
 import 'package:first_flutter_app/views/pages/auth/login_page.dart';
-import 'package:first_flutter_app/views/widget_tree.dart';
+import 'package:first_flutter_app/views/pages/auth/onboarding_page.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -39,7 +39,7 @@ class WelcomePage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return LoginPage(title: 'REGISTER');
+                          return OnboardingPage();
                         },
                       ),
                     );
