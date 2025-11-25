@@ -1,4 +1,3 @@
-import 'package:first_flutter_app/data/constants.dart';
 import 'package:first_flutter_app/views/pages/auth/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
